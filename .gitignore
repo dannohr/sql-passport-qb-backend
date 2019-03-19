@@ -1,0 +1,7 @@
+.env
+node_modules
+
+config/QBconfig.js
+config/jwtConfig.js
+config/openid_configuration.js
+config/sequelizeConfig.js
