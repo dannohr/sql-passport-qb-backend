@@ -21,7 +21,6 @@ app.use(sessionManagement);
 app.use(passport.initialize());
 
 app.get("/", (req, res) => res.send("App is working"));
-
 app.use("/api", routes);
 app.use("/api/qb", routesQb);
 

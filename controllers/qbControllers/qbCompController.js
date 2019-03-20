@@ -1,4 +1,4 @@
-var tools = require("../../services/qbServices/qbAuthService");
+import tools from "../../services/qbServices/qbAuthService";
 import axios from "axios";
 import config from "../../config/QBconfig.js";
 
@@ -23,18 +23,31 @@ module.exports = {
         .get(url, authHeaders)
         .then(response => {
           // Check if 401 response was returned - refresh tokens if so!
+          // console.log("reg is");
+          // console.log(req);
+          // console.log("requestObj is");
+          // console.log(requestObj);
+          // console.log("err is");
+          // console.log(err);
+          // console.log("response");
+          // console.log(response);
           // tools
-          //   .checkForUnauthorized(req, requestObj, err, response)
+          //   .checkForExpiredToken(req, requestObj, err, response)
           //   .then(function({ err, response }) {
           //     if (err || response.statusCode != 200) {
-          //       return res.json({ error: err, statusCode: response.statusCode });
+          //       return res.json({
+          //         error: err,
+          //         statusCode: response.statusCode
+          //       });
           //     }
           //   });
+
           res.status(200).send(response.data);
         })
         .catch(err => {
-          console.log(err);
-          res.status(401).send({ error: err });
+          console.log("in .catch in qbCompController");
+          console.log(err.response);
+          res.status(401).send({ error: err.response });
         });
     }
   }

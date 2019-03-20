@@ -86,6 +86,37 @@ var Tools = function() {
     });
   };
 
+  // modified because the error is showing up in the ..catch
+  this.checkForExpiredToken = function(req, requestObj, err, response) {
+    console.log("in checkForExpiredToken");
+    return new Promise(function(resolve, reject) {
+      if (response.statusCode == 401) {
+        console.log("Received a 401 response!  Trying to refresh tokens.");
+
+        // Refresh the tokens
+        tools.refreshTokens(req.session).then(
+          function(newToken) {
+            // Try API call again, with new accessToken
+            requestObj.headers.Authorization = "Bearer " + newToken.accessToken;
+            console.log("Trying again, making API call to: " + requestObj.url);
+            request(requestObj, function(err, response) {
+              // Logic (including error checking) should be continued with new
+              // err/response objects.
+              resolve({ err, response });
+            });
+          },
+          function(err) {
+            // Error refreshing the tokens
+            reject(err);
+          }
+        );
+      } else {
+        // No 401, continue!
+        resolve({ err, response });
+      }
+    });
+  };
+
   // Refresh Token should be called if access token expires, or if Intuit
   // returns a 401 Unauthorized.
   this.refreshTokens = function(session) {

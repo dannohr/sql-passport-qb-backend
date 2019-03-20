@@ -18,10 +18,25 @@ module.exports = {
     if (authHeaders.headers) {
       postQBquery(authHeaders, req.session.realmId, body)
         .then(response => {
+          // console.log(
+          //   "---------------------------------------------------------"
+          // );
+          // console.log(
+          //   " ---- Response from postQBquery in qbCustController ---- "
+          // );
+          // console.log(response.data);
+          // console.log(
+          //   "---------------------------------------------------------"
+          // );
+
+          // console.log(" ---- Response from pleaseWork ---- ");
+          // let pleaseWork = inspect(response);
+          // console.log(pleaseWork);
           res.status(200).send(response);
+          // let rev?isedWork = pleaseWork.
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err);
           return res.send({ error: err });
         });
     }
