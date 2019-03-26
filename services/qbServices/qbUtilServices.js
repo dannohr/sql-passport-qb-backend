@@ -14,20 +14,20 @@ module.exports = {
           "---------------------------------------------------------"
         );
         console.log(" ---- Response from postQBquery in postQBquery ---- ");
-        // console.log(response.error);
+        console.log(response.data);
         console.log(
           "---------------------------------------------------------"
         );
 
         // Check if 401 response was returned - refresh tokens if so!
-        tools
-          .checkForExpiredToken(req, requestObj, err, response)
-          .then(function({ err, response }) {
-            console.log("caught 401 error in the .then");
-            if (err || response.statusCode != 200) {
-              return res.json({ error: err, statusCode: response.statusCode });
-            }
-          });
+        // tools
+        //   .checkForExpiredToken(req, requestObj, err, response)
+        //   .then(function({ err, response }) {
+        //     console.log("caught 401 error in the .then");
+        //     if (err || response.statusCode != 200) {
+        //       return res.json({ error: err, statusCode: response.statusCode });
+        //     }
+        //   });
         return response.data;
       })
       .catch(err => {

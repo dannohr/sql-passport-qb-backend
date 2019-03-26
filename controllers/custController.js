@@ -24,8 +24,12 @@ module.exports = {
   },
 
   add(req, res) {
-    return Customer.create({
-      username: req.body.username
+    return db.Customer.create({
+      qbId: req.body.qbId,
+      Active: req.body.Active,
+      Balance: req.body.Balance,
+      CustomerName: req.body.CustomerName,
+      SyncToken: req.body.SyncToken
     })
       .then(customer => res.status(201).send(customer))
       .catch(error => res.status(400).send(error));
