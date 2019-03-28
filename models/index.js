@@ -8,16 +8,18 @@ var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/sequelizeConfig.js")[env];
 var db = {};
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  var sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
-}
+// if (config.use_env_variable) {
+//   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
+var sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  config
+  // { logging: msg => logger.info(msg) }
+  // { logging: false }
+);
+// }
 
 fs.readdirSync(__dirname)
   .filter(file => {
@@ -38,8 +40,20 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+// Following will sync database with Models.
+// DO NOT DO THIS is there is data you want to keep.
+// sequelize
+//   .sync({ force: true })
+//   .then(function() {
+//     console.log("database sync'd with models");
+//   })
+//   .catch(function(err) {
+//     console.log(err);
+//   });
+//---------------------------------------------------
+
 db.sequelize = sequelize;
 
 db.Sequelize = Sequelize;
-// console.log(db.Session);
+
 module.exports = db;

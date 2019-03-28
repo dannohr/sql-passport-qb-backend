@@ -6,26 +6,29 @@ module.exports = {
     // Return a promise to correctly handle asynchronicity.
 
     return queryInterface.bulkInsert(
-      "UserCompany",
+      "UserCompanyRole",
       [
         {
-          userId: "1",
-          companyId: "1",
-          userRoleId: "1",
+          UserCompanyId: "1",
+          UserRoleId: "1",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          userId: "1",
-          companyId: "2",
-          userRoleId: "1",
+          UserCompanyId: "2",
+          UserRoleId: "1",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          userId: "2",
-          companyId: "2",
-          userRoleId: "2",
+          UserCompanyId: "4",
+          UserRoleId: "1",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          UserCompanyId: "3",
+          UserRoleId: "2",
           createdAt: new Date(),
           updatedAt: new Date()
         }
@@ -37,6 +40,6 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     // Return a promise to correctly handle asynchronicity.
 
-    return queryInterface.bulkDelete("UserCompany", null, {});
+    return queryInterface.bulkDelete("UserCompanyRole", null, {});
   }
 };

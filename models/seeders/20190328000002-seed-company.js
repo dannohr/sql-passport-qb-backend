@@ -13,7 +13,8 @@ module.exports = {
         {
           name: "Sandbox Company_US_1",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
+          AddressId: 1
         },
         {
           name: "Sandbox Company_US_2",

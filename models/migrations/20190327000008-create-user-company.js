@@ -9,16 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
+      createdAt: {
         allowNull: false,
-        references: {
-          model: "User",
-          key: "id"
-        }
+        type: Sequelize.DATE
       },
-      companyId: {
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      CompanyId: {
         type: Sequelize.INTEGER,
         onDelete: "CASCADE",
         allowNull: false,
@@ -27,22 +26,14 @@ module.exports = {
           key: "id"
         }
       },
-      userRoleId: {
+      UserId: {
         type: Sequelize.INTEGER,
         onDelete: "CASCADE",
-        allowNull: true,
+        allowNull: false,
         references: {
-          model: "UserRole",
+          model: "User",
           key: "id"
         }
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },

@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     Company.belongsToMany(models.User, {
       through: models.UserCompany
     });
+    Company.belongsTo(models.Address, {});
   };
 
   return Company;

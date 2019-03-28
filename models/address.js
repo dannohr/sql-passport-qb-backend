@@ -1,10 +1,9 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Company = sequelize.define(
-    "Company",
+  const Address = sequelize.define(
+    "Address",
     {
       id: {
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
@@ -36,12 +35,12 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
-  Company.associate = models => {
-    // Company.hasMany(models.UserCompany, {});
-    Company.belongsToMany(models.User, {
-      through: models.UserCompany
-    });
+  Address.associate = models => {
+    Address.hasMany(models.Customer, { foreignKey: "ShippingAddressId" });
+    Address.hasMany(models.Customer, { foreignKey: "BillingAddressId" });
+    Address.hasMany(models.Company, {});
+    Address.hasMany(models.Vendor, {});
   };
 
-  return Company;
+  return Address;
 };

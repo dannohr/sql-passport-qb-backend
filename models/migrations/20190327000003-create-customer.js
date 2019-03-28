@@ -22,6 +22,24 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      ShippingAddressId: {
+        onDelete: "CASCADE",
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Address",
+          key: "id"
+        },
+        allowNull: true
+      },
+      BillingAddressId: {
+        onDelete: "CASCADE",
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Address",
+          key: "id"
+        },
+        allowNull: true
       }
     });
   },
