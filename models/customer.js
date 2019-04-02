@@ -17,8 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Customer.associate = function(models) {
-    Customer.belongsTo(models.Address, { foreignKey: "ShippingAddressId" });
-    Customer.belongsTo(models.Address, { foreignKey: "BillingAddressId" });
+    Customer.belongsTo(models.Address, {
+      as: "ShippingAddress",
+      foreignKey: "ShippingAddressId"
+    });
+    Customer.belongsTo(models.Address, {
+      as: "BillingAddress",
+      foreignKey: "BillingAddressId"
+    });
   };
   return Customer;
 };

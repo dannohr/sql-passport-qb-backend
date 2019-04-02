@@ -1,9 +1,16 @@
 var express = require("express");
 var router = express.Router();
 
-import { custCtrl, authCtrl, compCtrl, userCtrl } from "../controllers";
+import {
+  custCtrl,
+  authCtrl,
+  compCtrl,
+  userCtrl,
+  addrCtrl
+} from "../controllers";
 var checkAuth = authCtrl.isAuthenticated;
 
+//Non quickbooks routes
 router.post("/login", authCtrl.login);
 router.get("/me", authCtrl.me);
 
@@ -24,5 +31,11 @@ router.get("/company/:id", checkAuth, compCtrl.getById);
 router.post("/company", checkAuth, compCtrl.add);
 router.put("/company/:id", checkAuth, compCtrl.update);
 router.delete("/company/:id", checkAuth, compCtrl.delete);
+
+router.get("/address", checkAuth, addrCtrl.list);
+router.get("/address/:id", checkAuth, addrCtrl.getById);
+router.post("/address", checkAuth, addrCtrl.add);
+router.put("/address/:id", checkAuth, addrCtrl.update);
+router.delete("/address/:id", checkAuth, addrCtrl.delete);
 
 module.exports = router;

@@ -2,7 +2,18 @@ const db = require("../models/index");
 
 module.exports = {
   list(req, res) {
-    return db.Customer.findAll()
+    return db.Customer.findAll({
+      include: [
+        {
+          model: db.Address,
+          as: "ShippingAddress"
+        },
+        {
+          model: db.Address,
+          as: "BillingAddress"
+        }
+      ]
+    })
       .then(customers => res.status(200).send(customers))
       .catch(error => {
         res.status(400).send(error);
@@ -11,7 +22,18 @@ module.exports = {
 
   getById(req, res) {
     console.log(req.params.id);
-    return db.Customer.findByPk(req.params.id)
+    return db.Customer.findByPk(req.params.id, {
+      include: [
+        {
+          model: db.Address,
+          as: "ShippingAddress"
+        },
+        {
+          model: db.Address,
+          as: "BillingAddress"
+        }
+      ]
+    })
       .then(customer => {
         if (!customer) {
           return res.status(404).send({
@@ -24,12 +46,16 @@ module.exports = {
   },
 
   add(req, res) {
+    console.log("-------------------------");
+    console.log(req.body);
     return db.Customer.create({
       qbId: req.body.qbId,
       Active: req.body.Active,
       Balance: req.body.Balance,
       CustomerName: req.body.CustomerName,
-      SyncToken: req.body.SyncToken
+      SyncToken: req.body.SyncToken,
+      ShippingAddressId: req.body.ShippingAddressId,
+      BillingAddressId: req.body.BillingAddressId
     })
       .then(customer => res.status(201).send(customer))
       .catch(error => res.status(400).send(error));

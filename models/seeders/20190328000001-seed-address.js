@@ -18,7 +18,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          name: "Customer 1 Billing",
+          name: "Customer 1 Shipping",
           address: "456 Home St.",
           city: "Irving",
           state: "TX",
@@ -27,7 +27,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          name: "Customer 1 Shipping",
+          name: "Customer 1 Billing",
           address: "456 Home St.",
           city: "Irving",
           state: "TX",
