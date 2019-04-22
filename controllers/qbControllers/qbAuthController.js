@@ -1,5 +1,5 @@
 var tools = require("../../services/qbServices/qbAuthService");
-import axios from "axios";
+var axios = require("axios");
 
 // This is all from Intuit Developer Website
 

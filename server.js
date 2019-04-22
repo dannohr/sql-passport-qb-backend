@@ -1,12 +1,12 @@
-import express from "express";
-import path from "path";
-import bodyParser from "body-parser";
-import passport from "passport";
-import sessionManagement from "./modules/sessionManagement";
+const express = require("express");
+const path = require("path");
+require("dotenv").config();
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const sessionManagement = require("./modules/sessionManagement");
 
 require("./modules/passportConfig");
 
-const config = require("./config");
 const app = express();
 const port = process.env.PORT || 3001;
 const routes = require("./routes");
@@ -22,13 +22,6 @@ app.get("/", (req, res) => res.send("App is working"));
 app.use("/api", routes);
 app.use("/api/qb", routesQb);
 
-console.log(process.env.NODE_ENV);
-console.log(config);
-
 app.listen(port, () => {
   console.log("Express server listening on port " + port);
 });
-
-module.exports = {
-  app
-};

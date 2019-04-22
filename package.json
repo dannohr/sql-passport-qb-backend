@@ -1,6 +1,6 @@
 {
-  "name": "express-example",
-  "version": "0.0.0",
+  "name": "sql-passport-qb-backend",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "sequelize db:migrate && sequelize db:seed:all && nodemon start.js",

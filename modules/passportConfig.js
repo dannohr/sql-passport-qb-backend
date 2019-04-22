@@ -1,7 +1,7 @@
-import bcrypt from "bcryptjs";
-import Sequelize from "sequelize";
-import jwtSecret from "../config/jwtConfig";
-import passport from "passport";
+const bcrypt = require("bcryptjs");
+const Sequelize = require("sequelize");
+const jwtSecret = require("../config/jwtConfig");
+const passport = require("passport");
 
 const BCRYPT_SALT_ROUNDS = 8;
 

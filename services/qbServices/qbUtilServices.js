@@ -1,6 +1,6 @@
-import axios from "axios";
-import config from "../../config/QBconfig.js";
-import tools from "../../services/qbServices/qbAuthService";
+var axios = require("axios");
+var config = require("../../config/QBconfig.js");
+// import tools from "../../services/qbServices/qbAuthService";
 
 module.exports = {
   postQBquery(authHeaders, realmId, body) {

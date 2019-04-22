@@ -1,6 +1,6 @@
-import tools from "../../services/qbServices/qbAuthService";
-import axios from "axios";
-import config from "../../config/QBconfig.js";
+var tools = require("../../services/qbServices/qbAuthService");
+var axios = require("axios");
+var config = require("../../config/QBconfig.js");
 
 //  Controller for the Quickbooks COMPANY
 

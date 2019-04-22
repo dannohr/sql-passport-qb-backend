@@ -1,7 +1,7 @@
 var tools = require("../../services/qbServices/qbAuthService");
-import axios from "axios";
-import config from "../../config/QBconfig.js";
-import { postQBquery } from "../../services/qbServices/qbUtilServices";
+var axios = require("axios");
+var config = require("../../config/QBconfig.js");
+var postQBquery = require("../../services/qbServices/qbUtilServices");
 
 //  Controller for the Quickbooks CUSTOMER
 

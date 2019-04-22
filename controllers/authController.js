@@ -1,6 +1,6 @@
 var passport = require("passport");
-import jwt from "jsonwebtoken";
-import jwtConfig from "../config/jwtConfig";
+var jwt = require("jsonwebtoken");
+var jwtConfig = require("../config/jwtConfig");
 const db = require("../models/index");
 
 module.exports = {

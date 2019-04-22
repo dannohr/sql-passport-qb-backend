@@ -1,13 +1,12 @@
 var express = require("express");
 var router = express.Router();
 
-import {
-  custCtrl,
-  authCtrl,
-  compCtrl,
-  userCtrl,
-  addrCtrl
-} from "../controllers";
+var custCtrl = require("../controllers/custController");
+var authCtrl = require("../controllers/authController");
+var compCtrl = require("../controllers/compController");
+var userCtrl = require("../controllers/userController");
+var addrCtrl = require("../controllers/addressController");
+
 var checkAuth = authCtrl.isAuthenticated;
 
 //Non quickbooks routes

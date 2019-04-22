@@ -1,12 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
-import {
-  authCtrlQb,
-  compCtrlQb,
-  custCtrlQb
-} from "../controllers/qbControllers";
-// var checkAuth = authCtrl.isAuthenticated;
+var authCtrlQb = require("../controllers/qbControllers/qbAuthController");
+var compCtrlQb = require("../controllers/qbControllers/qbCompController");
+var custCtrlQb = require("../controllers/qbControllers/qbCustController");
 
 router.get("/auth", authCtrlQb.auth);
 router.get("/callback", authCtrlQb.callback);

@@ -1,5 +1,5 @@
-import session from "express-session";
-import db from "../models/index";
+const session = require("express-session");
+const db = require("../models/index");
 
 var SequelizeStore = require("connect-session-sequelize")(session.Store);
 
