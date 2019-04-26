@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const Sequelize = require("sequelize");
-const jwtSecret = require("../config/jwtConfig");
+// const jwtSecret = require("../config/jwtConfig");
 const passport = require("passport");
 
 const BCRYPT_SALT_ROUNDS = 8;
@@ -105,7 +105,7 @@ passport.use(
 
 const opts = {
   jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme("JWT"),
-  secretOrKey: jwtSecret.jwtSecret
+  secretOrKey: process.env.JWT_SECRET
 };
 
 passport.use(

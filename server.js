@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(sessionManagement);
 
-app.get("/", (req, res) => res.send("App is working"));
+app.get("/test", (req, res) => res.send("App is working"));
 app.use("/api", routes);
 app.use("/api/qb", routesQb);
 

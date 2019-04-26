@@ -3,6 +3,9 @@ var jwt = require("jsonwebtoken");
 var jwtConfig = require("../config/jwtConfig");
 const db = require("../models/index");
 
+const jwt_secret = process.env.JWT_SECRET;
+const jwt_expires_in = parseInt(process.env.JWT_TOKEN_EXPIRES_IN);
+
 module.exports = {
   login(req, res) {
     if (!req.body.username || !req.body.password) {
@@ -34,8 +37,8 @@ module.exports = {
             username: req.body.username
           }
         }).then(user => {
-          const token = jwt.sign({ id: user.id }, jwtConfig.jwtSecret, {
-            expiresIn: jwtConfig.tokenExpiresIn
+          const token = jwt.sign({ id: user.id }, jwt_secret, {
+            expiresIn: jwt_expires_in
           });
 
           res.status(200).json({
