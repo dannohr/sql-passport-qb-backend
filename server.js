@@ -4,7 +4,7 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const sessionManagement = require("./modules/sessionManagement");
-
+const cors = require("cors");
 require("./modules/passportConfig");
 
 const app = express();
@@ -17,9 +17,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(sessionManagement);
+app.use(cors());
 
-app.get("/test", (req, res) => res.send("App is working"));
 app.use("/api", routes);
+// app.get("/api/test", (req, res) => res.send("App is working"));
 app.use("/api/qb", routesQb);
 
 app.listen(port, () => {

@@ -8,6 +8,7 @@ const jwt_expires_in = parseInt(process.env.JWT_TOKEN_EXPIRES_IN);
 
 module.exports = {
   login(req, res) {
+    console.log("starting login");
     if (!req.body.username || !req.body.password) {
       res.status(404).json({
         message: "All fields required"
