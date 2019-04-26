@@ -19,9 +19,9 @@ app.use(passport.initialize());
 app.use(sessionManagement);
 app.use(cors());
 
-app.use("/api", routes);
+app.use("/", routes);
 
-app.use("/api/qb", routesQb);
+app.use("/qb", routesQb);
 
 app.listen(port, () => {
   console.log("Express server listening on port " + port);
