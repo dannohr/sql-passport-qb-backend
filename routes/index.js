@@ -12,6 +12,7 @@ var checkAuth = authCtrl.isAuthenticated;
 //Non quickbooks routes
 router.post("/login", authCtrl.login);
 router.get("/me", authCtrl.me);
+router.get("/test", (req, res) => res.send("App is working"));
 
 router.get("/user", checkAuth, userCtrl.list);
 router.get("/user/:id", checkAuth, userCtrl.getById);

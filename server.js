@@ -20,7 +20,7 @@ app.use(sessionManagement);
 app.use(cors());
 
 app.use("/api", routes);
-// app.get("/api/test", (req, res) => res.send("App is working"));
+
 app.use("/api/qb", routesQb);
 
 app.listen(port, () => {
